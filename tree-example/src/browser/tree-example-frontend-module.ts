@@ -16,9 +16,11 @@ import { TreeLabelProvider } from './tree/tree-label-provider';
 import { TreeLabelProviderContribution } from './tree-label-provider-contribution';
 import { NewTreeExampleFileCommandHandler } from './example-file/example-file-command';
 import { NewTreeExampleFileCommandContribution, NewTreeExampleFileMenuContribution } from './example-file/example-file-contribution';
+import { bindSamplePreferences } from './preferences/sample-preference-contribution';
 
 export default new ContainerModule(bind => {
     // Bind Theia IDE contributions for the example file creation menu entry.
+    bindSamplePreferences(bind);
     bind(NewTreeExampleFileCommandHandler).toSelf();
     bind(CommandContribution).to(NewTreeExampleFileCommandContribution);
     bind(MenuContribution).to(NewTreeExampleFileMenuContribution)
